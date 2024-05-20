@@ -1,4 +1,4 @@
-import { MongoDBClient } from "./MongoClient";
+import mongoose from "mongoose";
 
 interface IInitDatabase {
   connectionString: string;
@@ -11,13 +11,10 @@ export const connectDatabase = async ({
   callback,
   onError,
 }: IInitDatabase) => {
-  const client = MongoDBClient(connectionString);
   try {
-    await client.connect();
+    await mongoose.connect(connectionString);
     return callback();
   } catch (error) {
     onError(error);
-  } finally {
-    await client.close();
   }
 };
