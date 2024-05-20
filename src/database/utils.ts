@@ -1,9 +1,9 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose'
 
 interface IInitDatabase {
-  connectionString: string;
-  callback: () => void;
-  onError: (error: string) => void;
+  connectionString: string
+  callback: () => void
+  onError: (error: string) => void
 }
 
 export const connectDatabase = async ({
@@ -12,9 +12,9 @@ export const connectDatabase = async ({
   onError,
 }: IInitDatabase) => {
   try {
-    await mongoose.connect(connectionString);
-    return callback();
+    await mongoose.connect(connectionString)
+    return callback()
   } catch (error) {
-    onError(error);
+    onError(error)
   }
-};
+}

@@ -1,13 +1,14 @@
-import { Employer } from "@/types/Employer";
+import { Employer } from '@/types/Employer'
 
 export interface EmployerDatabase extends Employer {
-  createdAt: string;
-  updatedAt: string;
-  __v: string;
-  _id: string;
+  createdAt: string
+  updatedAt: string
+  __v: string
+  _id: string
 }
 
 export const removeDatabaseEmployerFields = (employer: EmployerDatabase) => {
-  const { createdAt, updatedAt, __v, _id, ...cleanedEmployer } = employer;
-  return cleanedEmployer;
-};
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { createdAt, updatedAt, __v, _id, ...cleanedEmployer } = employer
+  return cleanedEmployer
+}

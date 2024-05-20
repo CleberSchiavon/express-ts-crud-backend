@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
-import { EmployerSchema } from "../schemas/Employer.schema";
+import mongoose from 'mongoose'
+import { EmployerSchema } from '../schemas/Employer.schema'
 
-export const EmployerModel = mongoose.model("Employer", EmployerSchema);
+export const EmployerModel = mongoose.model('Employer', EmployerSchema)
