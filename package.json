@@ -7,7 +7,8 @@
     "presetup": "npm install",
     "dev": "nodemon",
     "start": "npm run build && cross-env NODE_ENV=production node dist/index.js",
-    "build": "tsc && tsc-alias"
+    "build": "tsc && tsc-alias",
+    "release": "standard-version"
   },
   "keywords": [],
   "license": "ISC",
@@ -31,9 +32,62 @@
     "@types/node": "^20.12.12",
     "cross-env": "^7.0.3",
     "nodemon": "^3.1.0",
+    "standard-version": "^9.5.0",
     "ts-node": "^10.9.2",
     "tsc-alias": "^1.8.10",
     "tsconfig-paths": "^4.2.0",
     "typescript": "^5.4.5"
+  },
+  "standard-version": {
+    "types": [
+      {
+        "type": "rc",
+        "section": "Release"
+      },
+      {
+        "type": "feat",
+        "section": "Features"
+      },
+      {
+        "type": "fix",
+        "section": "Bug Fixes"
+      },
+      {
+        "type": "hotfix",
+        "section": "Bug Fixes"
+      },
+      {
+        "type": "ci",
+        "section": "CI"
+      },
+      {
+        "type": "chore",
+        "section": "Chores"
+      },
+      {
+        "type": "style",
+        "section": "Styles"
+      },
+      {
+        "type": "docs",
+        "section": "Documentation"
+      },
+      {
+        "type": "perf",
+        "section": "Performance Improvements"
+      },
+      {
+        "type": "refac",
+        "section": "Refactorings"
+      },
+      {
+        "type": "revert",
+        "section": "Reversal"
+      },
+      {
+        "type": "test",
+        "section": "Tests"
+      }
+    ]
   }
 }
