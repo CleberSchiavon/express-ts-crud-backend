@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/CleberSchiavon/express-ts-crud-backend/compare/v1.1.1...v1.2.0) (2024-05-20)
+
+
+### Features
+
+* **husky:** adding pre commit lint ([9d24677](https://github.com/CleberSchiavon/express-ts-crud-backend/commit/9d246772a037c6f1f908dd4e876749676a0e4994))
+
+
+### Documentation
+
+* **README.md:** updating readme ([0637b1b](https://github.com/CleberSchiavon/express-ts-crud-backend/commit/0637b1b4377f792c516e3f3c501a1533a3cdda9c))
+
 ### [1.1.1](https://github.com/CleberSchiavon/express-ts-crud-backend/compare/v1.1.0...v1.1.1) (2024-05-20)
 
 
