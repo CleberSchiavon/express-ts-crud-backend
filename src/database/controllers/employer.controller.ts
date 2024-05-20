@@ -25,7 +25,9 @@ export const createEmployer = async (employerData: Employer) => {
 
 export const getAllEmployers = async () => {
   try {
-    const employers = await EmployerModel.find();
+    const employers = await EmployerModel.find()
+      .select("-createdAt -updatedAt -__v -_id")
+      .exec();
     return employers;
   } catch (error) {
     AppLogger({
@@ -39,7 +41,9 @@ export const getAllEmployers = async () => {
 
 export const getEmployerById = async (employerId: string) => {
   try {
-    const employer = await EmployerModel.findOne({ id: employerId }).exec();
+    const employer = await EmployerModel.findOne({ id: employerId })
+      .select("-createdAt -updatedAt -__v -_id")
+      .exec();
     if (!employer) {
       AppLogger({
         logMessage: `Error when try to find employer by ID: ${employerId} (Employer Not Found)`,
