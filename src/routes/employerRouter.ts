@@ -7,6 +7,10 @@ import {
   deleteEmployer,
 } from "@/database/controllers/employer.controller";
 import { APIMessages } from "@/utils/APIMessages";
+import {
+  EmployerDatabase,
+  removeDatabaseEmployerFields,
+} from "@/utils/handlers/EmployerHandler";
 
 const employerRouter = express.Router();
 
@@ -36,7 +40,8 @@ employerRouter.post("/", async (req, res) => {
   const employerData = req.body;
   try {
     const newEmployer = await createEmployer(employerData);
-    res.status(201).json(newEmployer);
+    const cleanedEmployer = removeDatabaseEmployerFields(newEmployer.toJSON());
+    res.status(201).json(cleanedEmployer);
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
@@ -48,7 +53,10 @@ employerRouter.put("/:id", async (req, res) => {
   const updates = req.body;
   try {
     const updatedEmployer = await updateEmployer(id, updates);
-    res.json(updatedEmployer);
+    const cleanedEmployer = removeDatabaseEmployerFields(
+      updatedEmployer as EmployerDatabase
+    );
+    res.status(200).json(cleanedEmployer);
   } catch (error) {
     res.status(400).json({ error: error.message });
   }

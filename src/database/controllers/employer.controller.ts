@@ -14,91 +14,103 @@ export const createEmployer = async (employerData: Employer) => {
     });
     return newEmployer;
   } catch (error) {
+    const errorMessage = `Failed to create employer: ${error.message}`;
     AppLogger({
-      logMessage: `Error when try to create a employers (${error.message})`,
+      logMessage: errorMessage,
       logReturn: LoggerReturn.ERROR,
       type: LoggerTypes.DATABASE_ERROR,
     });
-    throw new Error("Failed to create employer: " + error.message);
+    throw new Error(errorMessage);
   }
 };
 
-export const getAllEmployers = async () => {
+export const getAllEmployers = async (): Promise<Employer[]> => {
   try {
-    const employers = await EmployerModel.find()
-      .select("-createdAt -updatedAt -__v -_id")
+    const employers = await EmployerModel.find(
+      {},
+      "-createdAt -updatedAt -__v -_id"
+    )
+      .lean()
       .exec();
     return employers;
   } catch (error) {
+    const errorMessage = `Failed to get employers: ${error.message}`;
     AppLogger({
-      logMessage: `Error when try to find all employers (${error.message})`,
+      logMessage: errorMessage,
       logReturn: LoggerReturn.ERROR,
       type: LoggerTypes.DATABASE_ERROR,
     });
-    throw new Error("Failed to get employers: " + error.message);
+    throw new Error(errorMessage);
   }
 };
 
-export const getEmployerById = async (employerId: string) => {
+export const getEmployerById = async (
+  employerId: string
+): Promise<Employer | null> => {
   try {
-    const employer = await EmployerModel.findOne({ id: employerId })
-      .select("-createdAt -updatedAt -__v -_id")
+    const employer = await EmployerModel.findOne(
+      { employerId },
+      "-createdAt -updatedAt -__v -_id"
+    )
+      .lean()
       .exec();
     if (!employer) {
-      AppLogger({
-        logMessage: `Error when try to find employer by ID: ${employerId} (Employer Not Found)`,
-        logReturn: LoggerReturn.ERROR,
-        type: LoggerTypes.DATABASE_ERROR,
-      });
-      throw new Error("Employer not found");
+      const errorMessage = `Employer not found with ID: ${employerId}`;
+      throw new Error(errorMessage);
     }
     return employer;
   } catch (error) {
     AppLogger({
-      logMessage: `Error when try to find employer by ID: ${employerId} (${error.message})`,
+      logMessage: `Failed to get employer with ID: ${employerId} - ${error.message}`,
       logReturn: LoggerReturn.ERROR,
       type: LoggerTypes.DATABASE_ERROR,
     });
-    throw new Error("Failed to get employer: " + error.message);
+    throw new Error(error.message);
   }
 };
 
-export const updateEmployer = async (employerId: string, updates: Employer) => {
+export const updateEmployer = async (
+  employerId: string,
+  updates: Partial<Employer>
+): Promise<Employer | null> => {
   try {
-    const updatedEmployer = await EmployerModel.findByIdAndUpdate(
-      employerId,
+    const updatedEmployer = await EmployerModel.findOneAndUpdate(
+      { employerId: employerId },
       updates,
       { new: true }
-    );
+    )
+      .lean()
+      .exec();
     if (!updatedEmployer) {
-      AppLogger({
-        logMessage: `Error when try to update employer by ID: ${employerId} (EMPLOYER NOT FOUND)`,
-        logReturn: LoggerReturn.ERROR,
-        type: LoggerTypes.DATABASE_ERROR,
-      });
-
-      throw new Error("Employer not found");
+      const errorMessage = `Employer not found with ID: ${employerId}`;
+      throw new Error(errorMessage);
     }
     return updatedEmployer;
   } catch (error) {
     AppLogger({
-      logMessage: `Error when try to update employer by ID: ${employerId} (${error.message})`,
+      logMessage: `Failed to update employer with ID: ${employerId} - ${error.message}`,
       logReturn: LoggerReturn.ERROR,
       type: LoggerTypes.DATABASE_ERROR,
     });
-    throw new Error("Failed to update employer: " + error.message);
+    throw new Error(error.message);
   }
 };
 
-export const deleteEmployer = async (employerId: string) => {
+export const deleteEmployer = async (employerId: string): Promise<void> => {
   try {
-    const deletedEmployer = await EmployerModel.findOneAndDelete({
-      id: employerId,
-    });
+    const deletedEmployer = await EmployerModel.findOneAndDelete({ employerId })
+      .lean()
+      .exec();
     if (!deletedEmployer) {
-      throw new Error("Employer not found");
+      const errorMessage = `Employer not found with ID: ${employerId}`;
+      throw new Error(errorMessage);
     }
   } catch (error) {
-    throw new Error("Failed to delete employer: " + error.message);
+    AppLogger({
+      logMessage: `Failed to delete employer with ID: ${employerId} - ${error.message}`,
+      logReturn: LoggerReturn.ERROR,
+      type: LoggerTypes.DATABASE_ERROR,
+    });
+    throw new Error(error.message);
   }
 };
