@@ -38,6 +38,9 @@ export const AppLogger = ({
     case LoggerTypes.INFO:
       logMessage(LoggerTypes.INFO, logFunction(message));
       break;
+    case LoggerTypes.DATABASE_ERROR:
+      logMessage(LoggerTypes.DATABASE_ERROR, logFunction(message));
+      break;
     default:
       console.warn(`Unknown logger type: ${type}`);
   }

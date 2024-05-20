@@ -1,6 +1,7 @@
 export enum LoggerTypes {
   SERVER = "SERVER",
   INFO = "INFO",
+  DATABASE_ERROR = "DATABASE_ERROR",
 }
 
 export enum LoggerReturn {
