@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.1](https://github.com/CleberSchiavon/express-ts-crud-backend/compare/v1.1.0...v1.1.1) (2024-05-20)
+
+
+### Styles
+
+* **app:** adding a postman collection ([d48131c](https://github.com/CleberSchiavon/express-ts-crud-backend/commit/d48131ca66b54c07878c31a38dddf7ef683e5eac))
+
 ## 1.1.0 (2024-05-20)
 
 
