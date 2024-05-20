@@ -1,0 +1,124 @@
+{
+	"info": {
+		"_postman_id": "f8f168be-c33e-4368-ab19-8a2edb60b709",
+		"name": "Express Crud Backend",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET All Employers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url_dev}}/employer",
+					"host": [
+						"{{base_url_dev}}"
+					],
+					"path": [
+						"employer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Employer by Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url_dev}}/employer/6a11b4e6-4bbe-4c5c-ac22-bebb54d563fa",
+					"host": [
+						"{{base_url_dev}}"
+					],
+					"path": [
+						"employer",
+						"6a11b4e6-4bbe-4c5c-ac22-bebb54d563fa"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create a new Employer",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"John Doe\",\r\n    \"position\": \"Software Engineer\",\r\n    \"departament\": \"Engineering\",\r\n    \"admissionDate\": \"2022-01-01\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url_dev}}/employer",
+					"host": [
+						"{{base_url_dev}}"
+					],
+					"path": [
+						"employer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update a Employer",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"John Doe\",\r\n    \"position\": \"Software Engineer\",\r\n    \"departament\": \"Engineering\",\r\n    \"admissionDate\": \"2022-01-01\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url_dev}}/employer/6a11b4e6-4bbe-4c5c-ac22-bebb54d563fa",
+					"host": [
+						"{{base_url_dev}}"
+					],
+					"path": [
+						"employer",
+						"6a11b4e6-4bbe-4c5c-ac22-bebb54d563fa"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a Employer",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url_dev}}/employer/6a11b4e6-4bbe-4c5c-ac22-bebb54d563fa",
+					"host": [
+						"{{base_url_dev}}"
+					],
+					"path": [
+						"employer",
+						"6a11b4e6-4bbe-4c5c-ac22-bebb54d563fa"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
