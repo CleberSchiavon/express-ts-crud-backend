@@ -8,9 +8,10 @@
 ![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white)
 ![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
 
-# FRONT DO PROJETO: https://github.com/CleberSchiavon/react-employer-dashboard
+## FRONT DO PROJETO: https://github.com/CleberSchiavon/react-employer-dashboard
 
 ## TODO
+
 - Adicionar Swagger
 - Adicionar Testes (Jest já está instalado)
 - Aidicionar MonoRepo (TurboRepo Framework) com o Frontend
